@@ -4,3 +4,28 @@
     padding: 0;
     font-family: 'Segoe UI';
 }
+
+body {
+    line-height: 1.4;
+
+    @media (min-width: 1921px) {
+        font-size: 0.8vw;
+    }
+}
+
+button {
+    border-radius: 0.5rem;
+    @extend %boxShadow;
+    background-color: transparent;
+    border: none;
+    transition: all 0.2s ease-in-out;
+
+    &:active {
+        scale: 1.05;
+    }
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
