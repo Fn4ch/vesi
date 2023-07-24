@@ -1,10 +1,12 @@
 <template>
     <ProductInfo />
-    <PageDevider text="Наши услуги" />
+    <PageDivider text="Наши услуги" />
+    <ProductList />
 </template>
 
 <script setup lang="ts">
-import PageDevider from '../components/PageDevider.vue';
+import PageDivider from '../components/PageDivider.vue';
+import ProductList from '../components/ProductList.vue';
 
 
 </script>

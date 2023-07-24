@@ -5,16 +5,16 @@
                 Vesi Kazan
             </div>
             <div class="header__item">
-                Главная
+                Х
             </div>
             <div class="header__item">
-                Весы
+                У
             </div>
             <div class="header__item">
-                Услуги
+                Й
             </div>
             <div class="header__item">
-                О компании
+                Артур
             </div>
         </nav>
     </header>

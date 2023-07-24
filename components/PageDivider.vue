@@ -18,5 +18,6 @@ defineProps({
         padding: 1rem;
         font-size: 1rem;
         background-color: $colorGrey;
+        margin: 2rem 0;
     }
 </style>

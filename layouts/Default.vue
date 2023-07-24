@@ -20,6 +20,6 @@ import CustomPointer from '../components/CustomPointer.vue'
     flex-direction: column;
     padding: 0px auto;
     color: $colorBlack;
-    margin: 200px auto auto auto;
+    margin: 4vw auto auto auto;
 }
 </style>
