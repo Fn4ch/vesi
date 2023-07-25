@@ -37,11 +37,9 @@
 <style lang="scss" scoped>
     
 .product{
-    width: 70%;
     align-self: center;
     border-radius: 32px;
     color: $colorBlack;
-    padding: 4rem;
     
     header{
         padding: 0 2rem;

@@ -57,12 +57,15 @@ const products: Vesi[] = [
 <style lang="scss" scoped>
 .products-list{
     display: flex;
-    margin: 0 5rem;
+    margin: 0 10rem;
     @media (min-width: 1921px) {
-        margin: 0 4vw;
+        margin: 0 14vw;
     }
     @media (max-width: 1024px) {
        margin: 0 2rem; 
+    }
+    @media (max-width: 440px) {
+        margin: 0 1rem;
     }
     flex-direction: column;
     &__left{

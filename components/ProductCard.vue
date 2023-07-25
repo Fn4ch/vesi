@@ -17,13 +17,19 @@ defineProps({
     margin: 1rem;
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: min-content;
     padding: 3rem;
+    margin-top: 3rem;
     @extend %boxShadow;
     border-radius: 2rem;
     @media (min-width: 1921px) {
         border-radius: 1.6vw;
         padding: 2.4vw;
+        margin-top: 2.4vw;
+    }
+    @media (max-width: 1024px) {
+        padding: 1rem;
+        margin-top: 1rem;
     }
     &__title{
         padding: 1rem 0;
@@ -36,6 +42,7 @@ defineProps({
     &__description{
         font-size: 1rem;
         color: $colorGreyDark;
+        word-wrap: normal;
         @media (min-width: 1921px) {
             font-size: .8vw;
         }
@@ -44,6 +51,14 @@ defineProps({
         width: 30vw;
         height: 20vw;
         overflow: hidden;
+        @media (max-width: 1440px) {
+            width: 60vw;
+            height: 40vw;
+        }
+        @media (max-width: 768px) {
+            width: 80vw;
+            height: 52vw;
+        }
     }
 }    
 </style>

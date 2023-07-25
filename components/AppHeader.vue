@@ -5,16 +5,13 @@
                 Vesi Kazan
             </div>
             <div class="header__item">
-                Х
+                1
             </div>
             <div class="header__item">
-                У
+                2
             </div>
             <div class="header__item">
-                Й
-            </div>
-            <div class="header__item">
-                Артур
+                3
             </div>
         </nav>
     </header>
@@ -30,24 +27,25 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: transparent;
+    background-color: rgba($color: $colorWhite, $alpha: 0.4);
     backdrop-filter: blur(1rem);
     box-shadow: 16px 8px 16px rgba($color: $colorGrey, $alpha: 0.1);
     nav{
         color: $colorBlack;
         display: flex;
         align-items: center;
-        padding: 1rem 2rem;
         background-color: transparent;
-        @media (min-width: 1921px) {
-            padding: 0.6vw 1.2vw;
-        }
     }
 
     &__item{
         font-size: 1.5rem;
         margin-right: 1.5rem;
+        border-radius: 1rem;
+        padding: 0.5rem 1rem;
+        transition: all 0.4s ease;
+        cursor: pointer;
         @media (min-width: 1921px) {
+            padding: 0.4vw .8vw;
             font-size: 1.2vw;
             margin-right: 1.2vw;
         }
