@@ -1,11 +1,12 @@
 <template>
     <div class="products-list">
-        <ProductCard v-for="(p, index) in products" :title="p.title" :description="p.description" :class="index % 2 === 1 ? 'products-list__left' : 'products-list__right'"/>
+        <ProductCard v-for="(p, index) in products" :image="p.image" :title="p.title" :description="p.description" :class="index % 2 === 1 ? 'products-list__left' : 'products-list__right'"/>
     </div>
 </template>
 <script setup lang="ts">
 
 interface Vesi{
+    image?: string,
     title: string
     description: string
 }
@@ -16,6 +17,7 @@ const products: Vesi[] = [
         description: 'Весы предназначены для взвешивания сигма гениев, геев, камазистоф трактарисоф и так далее, размер 41024 на 2см'
     },
     {
+        image: '../src/assets/images/truck.png',
         title: 'Ультра-весы "Ховангипножиротрон"',
         description: 'Взвешивание наших шансов стать блогерами, пока весы считают лайки и просмотры...'
     },

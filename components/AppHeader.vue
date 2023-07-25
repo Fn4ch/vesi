@@ -2,13 +2,14 @@
     <header id="header" class="header">
         <nav>
             <div class="header__item">
-                Vesi Kazan
+                <Truck />
+                Едем трахат тваю мамку
             </div>
             <div class="header__item">
-                1
+                Ёбаные весы
             </div>
             <div class="header__item">
-                2
+                Взвесим даже Артура
             </div>
             <div class="header__item">
                 3
@@ -17,6 +18,7 @@
     </header>
 </template>
 <script setup lang="ts">
+import Truck from '../src/assets/images/Truck.vue'
 
 </script>
 
@@ -35,9 +37,15 @@
         display: flex;
         align-items: center;
         background-color: transparent;
+        padding: 0.5rem 2rem;
+        @media (max-width:1921px) {
+            padding: 0.4vw 1.6vw;
+        }
     }
 
     &__item{
+        display: flex;
+        align-items: center;
         font-size: 1.5rem;
         margin-right: 1.5rem;
         border-radius: 1rem;

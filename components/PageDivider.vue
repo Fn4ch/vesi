@@ -17,7 +17,7 @@ defineProps({
         right: 0;
         padding: 1rem;
         font-size: 1rem;
-        background-color: $colorGrey;
+        background-color: rgba($color: $colorBlue, $alpha: .6);
         margin: 2rem 0;
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="product-card">
-        <img :src="image ?? 'https://via.placeholder.com/600/5e3a73'" alt="product image">
+        <img :src="image ?? 'https://via.placeholder.com/600/aae0f3'" alt="product image">
         <div class="product-card__title">{{ title ?? 'Мужская цепь арго' }}</div>
         <div class="product-card__description">{{ description ?? 'Эти великолепные весы сигма, подарят вам наслаждение, рамзер 40 на 20' }}</div>
     </div>
@@ -51,6 +51,7 @@ defineProps({
         width: 30vw;
         height: 20vw;
         overflow: hidden;
+        flex-grow: 1;
         @media (max-width: 1440px) {
             width: 60vw;
             height: 40vw;
