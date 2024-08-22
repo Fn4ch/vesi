@@ -2,32 +2,44 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI';
+    font-family: 'General Sans';
+    background-color: #EAEBF0;
+}
+
+html{
+    margin: 0;
+    padding: 0;
 }
 
 body {
     line-height: 1.4;
-
-    @media (min-width: 1921px) {
-        font-size: 0.8vw;
-    }
+    font-size: 1rem;
 
     background-color: $colorWhite;
 }
 
 button {
+    font-size: 1rem;
     border-radius: 0.5rem;
-    @extend %boxShadow;
-    background-color: transparent;
+    background-color: $colorOrange;
+    color: #ffffff;
     border: none;
     transition: all 0.2s ease-in-out;
+    padding: 1rem 1.5rem;
+    text-align: center;
 
     &:active {
-        scale: 1.05;
+        scale: 1.02;
     }
 
     &:focus {
         border: none;
         outline: none;
     }
+}
+
+h1{
+    font-size: 4rem;
+    color: white;
+    background-color: transparent;
 }

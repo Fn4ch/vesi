@@ -1,14 +1,14 @@
 <template>
-        <AppHeader />
-        <CustomPointer style="position: fixed;"/>
-        <div id="content">
-            <slot />
-        </div>
+<div>
+    <AppHeader />
+    <div id="content">
+        <slot />
+    </div>
+</div>
 </template>
 
 <script setup lang="ts">
-import AppHeader from '../components/AppHeader.vue';
-import CustomPointer from '../components/CustomPointer.vue'
+import AppHeader from '~/components/AppHeader.vue';
 
 
 
@@ -20,6 +20,5 @@ import CustomPointer from '../components/CustomPointer.vue'
     flex-direction: column;
     padding: 0px auto;
     color: $colorBlack;
-    margin: 4vw auto auto auto;
 }
 </style>

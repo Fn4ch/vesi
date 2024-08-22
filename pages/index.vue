@@ -1,4 +1,5 @@
 <template>
+<div>
     <Head>
         <meta name="keywords" content="весы Казань, продажа весов, установка весов, промышленные весы, торговые весы, лабораторные весы, весы оборудование, весы для машин">
         <meta name="robots" content="index, follow">
@@ -13,14 +14,11 @@
         <meta property="og:url" content="https://www.vesiobr.ru/">
     </Head>
     <ProductInfo />
-    <PageDivider text="Наши услуги" />
     <ProductList />
+</div>
 </template>
 
 <script setup lang="ts">
-import PageDivider from '../components/PageDivider.vue'
-import ProductList from '../components/ProductList.vue'
-
 
 </script>
 
