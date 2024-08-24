@@ -35,13 +35,14 @@ import Truck from '~/src/images/Truck.vue';
     display: flex;
     justify-content: space-between;
     padding: 12px 120px;
-    @media (min-width: 1921px) {
-        padding: 0.6vw 6vw;
-    }
     color: $colorBlack;
     align-items: center;
     background-color: transparent;
 
+    @media (min-width: 1921px) {
+        padding: 0.6vw 6vw;
+    }
+    
     &__links{
         display: flex;
         column-gap: 48px;

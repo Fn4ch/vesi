@@ -49,5 +49,9 @@ defineProps({
             font-size: .8vw;
         }
     }
+
+    &:last-child{
+        justify-self: flex-end;
+    }
 }    
 </style>
