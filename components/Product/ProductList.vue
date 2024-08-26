@@ -6,14 +6,15 @@
         </div>
         <section class="products-list">
             <ProductCard 
-            v-for="(p, index) in PRODUCTS_DATA" 
-            :image="p.image" 
-            :title="p.title" 
-            :description="p.description" 
-            :class="index % 2 === 1 ? 'products-list__left' : 'products-list__right'"/>
+                v-for="(p, index) in PRODUCTS_DATA" 
+                :key="p.title"
+                :image="p.image" 
+                :title="p.title" 
+                :description="p.description" 
+                :class="index % 2 === 1 ? 'products-list__left' : 'products-list__right'"/>
         </section>
     </article>
-</section></template>
+</template>
 <script setup lang="ts">
 import {PRODUCTS_DATA} from '@/src/shared/constants/PRODUCTS'
 

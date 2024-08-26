@@ -24,7 +24,7 @@ import Truck from '~/src/images/Truck.vue';
     left: 0;
     right: 0;
     backdrop-filter: blur(0.1rem);
-    background-color: transparent;
+    background-color: $colorBlack;
     font-size: 20px;
     @media (max-width:1921px) {
         font-size: 1vw;

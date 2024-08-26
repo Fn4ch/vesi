@@ -1,17 +1,20 @@
 <template>
     <div class="product-card">
-        <NuxtImg :src="image ?? 'https://via.placeholder.com/600/aae0f3'" fit="cover" alt="product image" />
-        <div class="product-card__title">{{ title ?? 'Title' }}</div>
-        <div class="product-card__description">{{ description ?? 'Description' }}</div>
+        <NuxtImg :src="`/images/${image}.png`" fit="cover" width="320" height="240" alt="product image" />
+        <div class="product-card__title">{{ title }}</div>
+        <div class="product-card__description">{{ description }}</div>
         <button>Подробнее</button>
     </div>
 </template>
 <script setup lang="ts">
-
-defineProps({
-    image: String,
-    title: String,
-    description: String,
+withDefaults(defineProps<{
+    title: string,
+    image: string,
+    description: string
+}>(), {
+    title: 'Title',
+    image: '/images/pallete.png',
+    description: ''
 })
 </script>
 <style lang="scss" scoped>
@@ -21,6 +24,7 @@ defineProps({
     flex-direction: column;
     width: min-content;
     padding: 1.5rem;
+    width: 23rem;
     @extend %boxShadow;
     border-radius: 1rem;
     @media (min-width: 1921px) {
@@ -45,13 +49,15 @@ defineProps({
         font-size: 1rem;
         color: $colorGreyDark;
         word-wrap: normal;
+        padding-bottom: 1.5rem;
         @media (min-width: 1921px) {
             font-size: .8vw;
         }
     }
 
-    &:last-child{
-        justify-self: flex-end;
+    button{
+        font-size: 1rem;
+        margin-top: auto;
     }
 }    
 </style>

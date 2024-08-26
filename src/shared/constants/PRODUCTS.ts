@@ -1,9 +1,4 @@
 import vesi from './vesi.json'
+import type { IVesi } from '@/src/shared/models/product'
 
-export interface Vesi {
-    image?: string;
-    title: string;
-    description: string;
-  }
-
-export const PRODUCTS_DATA: Vesi[] = vesi
+export const PRODUCTS_DATA: IVesi[] = vesi
