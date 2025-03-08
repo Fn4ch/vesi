@@ -1,7 +1,7 @@
 <template>
     <article class="products">
         <div class="title">
-            <h2>Найдите лучшее решение для вас</h2>
+            <h2>Найдите то что вам нужно</h2>
             <h4>Широкий выбор для всех случаев</h4>
         </div>
         <section class="products-list">
@@ -37,6 +37,7 @@ import {PRODUCTS_DATA} from '@/src/shared/constants/PRODUCTS'
 
     h4{
         font-weight: 400;
+        font-size: 1.5rem;
     }
 }
 

@@ -2,7 +2,7 @@
     <header id="header" class="header">
         <nav class="navigation">
             <div class="navigation__logo">
-                <Truck />
+                <img src="../src/assets/logo.svg" class="logo"/>
             </div>
             <div class="navigation__links">
                 <NuxtLink class="link">Каталог</NuxtLink>
@@ -12,11 +12,16 @@
     </header>
 </template>
 <script setup lang="ts">
-import Truck from '~/src/images/Truck.vue';
 
 </script>
 
 <style lang="scss" scoped>
+.logo{
+    width: 64px;
+    color: white;
+    background-color: transparent;
+}
+
 .header{
     align-items: center;
     position: fixed;
@@ -34,7 +39,7 @@ import Truck from '~/src/images/Truck.vue';
 .navigation{
     display: flex;
     justify-content: space-between;
-    padding: 12px 120px;
+    padding: 4px 120px;
     color: $colorBlack;
     align-items: center;
     background-color: transparent;
@@ -51,6 +56,10 @@ import Truck from '~/src/images/Truck.vue';
         @media (min-width: 1921px) {
         row-gap: 2.4vw;
         }
+    }
+
+    &__logo{
+        background-color: transparent;
     }
 }
 
