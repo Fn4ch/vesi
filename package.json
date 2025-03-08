@@ -24,5 +24,8 @@
   "dependencies": {
     "pnpm": "^9.8.0",
     "yarn": "^1.22.22"
+  },
+  "build": {
+  "target": "static"
   }
 }

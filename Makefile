@@ -1,30 +1,38 @@
 IMAGE_NAME := ves
 CONTAINER_NAME := ves-container
-CONTAINER_BASE_PATH := /app
+TAG ?= latest
+PORT ?= 80:80
 
-.PHONY: install build dev start stop
-
-install:
-	@docker build -t $(IMAGE_NAME) .
-	@docker run --rm -d --name=$(IMAGE_NAME)-install $(IMAGE_NAME) tail -f package.json
-	@docker cp $(IMAGE_NAME)-install:$(CONTAINER_BASE_PATH)/node_modules $(PWD)/node_modules
-	@docker stop $(IMAGE_NAME)-install
-
+.PHONY: build run up stop rm clean logs
 build:
-	docker build -t $(IMAGE_NAME) .
-	docker run --rm -v $(PWD):/app $(IMAGE_NAME) yarn build
+    docker build -t $(IMAGE_NAME):$(TAG) .
 
-dev:
-	@docker build -t $(IMAGE_NAME) .
-	@docker run --rm \
-	--name=$(IMAGE_NAME)-build \
-	-v $(PWD):$(CONTAINER_BASE_PATH) \
-	-p 3000:3000 \
-	$(IMAGE_NAME) sh -c "yarn dev"
-start:
-	docker build -t $(IMAGE_NAME) .
-	docker start $(CONTAINER_NAME)
+# Запуск контейнера
+run:
+    docker run -d \
+        -p $(PORT) \
+        --name $(CONTAINER_NAME) \
+        $(IMAGE_NAME):$(TAG)
 
+# Сборка и запуск
+up: build run
+
+# Остановка контейнера
 stop:
-	docker build -t $(IMAGE_NAME) .
-	docker stop $(CONTAINER_NAME)
+    docker stop $(CONTAINER_NAME) || true
+
+# Удаление контейнера
+rm: stop
+    docker rm $(CONTAINER_NAME) || true
+
+# Полная очистка (контейнер + образ)
+clean: rm
+    docker rmi $(IMAGE_NAME):$(TAG) || true
+
+# Просмотр логов
+logs:
+    docker logs $(CONTAINER_NAME)
+
+# Заход в контейнер
+exec:
+    docker exec -it $(CONTAINER_NAME) sh

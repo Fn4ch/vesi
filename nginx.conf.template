@@ -1,0 +1,36 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        # Обработка клиентского роутинга
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Обработка source maps (опционально)
+    location ~ \.map$ {
+        add_header Content-Type application/json;
+        # Отключаем логгирование для карт исходников
+        access_log off;
+        log_not_found off;
+    }
+
+    # Версионный endpoint (если нужен)
+    location /version {
+        add_header Content-Type application/json;
+        return 200 "\"${VERSION}\"";
+    }
+
+    # Безопасность и кэширование
+    location ~* \.(?:manifest|appcache|html?|xml|json)$ {
+        add_header Cache-Control "no-store, no-cache";
+    }
+
+    location ~* \.(?:jpg|jpeg|png|gif|ico|css|js|woff2?)$ {
+        expires 1y;
+        add_header Cache-Control "public";
+    }
+}
