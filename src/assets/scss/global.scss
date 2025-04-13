@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'General Sans';
+    background-color: #EAEBF0;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.4;
+    font-size: 1rem;
+
+    background-color: $colorWhite;
+}
+
+button {
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: $colorOrange;
+    color: #ffffff;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    padding: 1rem 1.5rem;
+    text-align: center;
+
+    &:active {
+        scale: 1.02;
+    }
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+h1{
+    font-size: 4rem;
+    color: white;
+    background-color: transparent;
+}
