@@ -1,38 +1,15 @@
+import tsconfigPaths from 'vite-tsconfig-paths'
+
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-
-  alias: {
-    "~": "/<srcDir>",
-    "@": "/<srcDir>",
-    "~~": "/<rootDir>",
-    "@@": "/<rootDir>",
-    "#shared": "/<rootDir>/shared",
-    "assets": "/<srcDir>/assets",
-    "public": "/<srcDir>/public",
-    "#build": "/<rootDir>/.nuxt",
-    "#internal/nuxt/paths": "/<rootDir>/.nuxt/paths.mjs"
-  },
-
-  app: {
-    head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-    }
-  },
-
-  googleFonts: {
-    families: {
-      Outfit: true
-    }
-  },
-
-  css: ["~/src/assets/scss/global.scss"],
+  compatibilityDate: '2024-11-01',
+  devtools: { enabled: true },
+  modules: ['@nuxt/fonts', '@nuxt/image', '@nuxt/eslint'],
 
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/src/assets/scss/_vars.scss" as *;',
+          additionalData: '@use "@/assets/styles/_vars.scss" as *;',
         },
       },
     },
@@ -41,7 +18,4 @@ export default defineNuxtConfig({
   image: {
     inject: true,
   },
-
-  modules: ["@nuxtjs/google-fonts", '@nuxt/image', "@nuxt/eslint"],
-  compatibilityDate: '2024-10-30'
 })

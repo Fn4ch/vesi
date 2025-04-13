@@ -22,18 +22,18 @@ RUN yarn install --frozen-lockfile
 COPY . .
 RUN yarn build
 
-# Stage 4: Prepare production files
+# Stage 4: Production stage
 FROM base AS production
 
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=build /app/.output ./.output
 
-# Stage 5: Nginx for serving the app
-FROM nginx:1.27.0-alpine
+# Install Nginx
+RUN apk add --no-cache nginx
 
-# Copy Nginx configuration
-COPY nginx.conf.template /etc/nginx/templates/
+# Copy Nginx configuration template
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
-# Copy built application files to Nginx
-COPY --from=production /app/.output /usr/share/nginx/html
+# Expose port 80 for Nginx
+EXPOSE 80

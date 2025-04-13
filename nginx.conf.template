@@ -1,70 +1,23 @@
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+    listen 80;
 
-    root /usr/share/nginx/html;
-    index index.html;
+    # Корневая директория (не используется для SSR)
+    root /app/.output/public;
 
+    # Проксирование запросов к Nitro-серверу
     location / {
-        # Обработка клиентского роутинга
-        try_files $uri $uri/ /index.html;
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 
-    # Обработка source maps (опционально)
-    location ~ \.map$ {
-        add_header Content-Type application/json;
-        # Отключаем логгирование для карт исходников
-        access_log off;
-        log_not_found off;
-    }
-
-    # Версионный endpoint (если нужен)
-    location /version {
-        add_header Content-Type application/json;
-        return 200 "\"${VERSION}\"";
-    }
-
-    # Безопасность и кэширование
-    location ~* \.(?:manifest|appcache|html?|xml|json)$ {
-        add_header Cache-Control "no-store, no-cache";
-    }
-
-    location ~* \.(?:jpg|jpeg|png|gif|ico|css|js|woff2?)$ {
+    # Обработка статических файлов
+    location /_nuxt/ {
+        alias /app/.output/public/_nuxt/;
         expires 1y;
-        add_header Cache-Control "public";
-    }
-}
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /app/dist;
-
-    index index.html;
-
-    location ~* \.js$ {
-        add_header  Content-Type    application/x-javascript;
-        try_files $uri =404;
-    }
-
-    location ~ \.map$ {
-        return 200;
-    }
-
-    location /assets {
-        try_files $uri =404;
-    }
-
-    location / {
-        try_files $uri $uri/ @rewrites;
-    }
-
-    location @rewrites {
-        rewrite ^(.+)$ /index.html last;
-    }
-
-    location /version {
-        add_header Content-Type application/json;
-        return 200 "\"${VERSION}\"";
+        access_log off;
     }
 }

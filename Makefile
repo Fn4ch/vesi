@@ -15,26 +15,32 @@ push:
 
 # Скачивание образа из реестра
 pull:
-    docker pull $(REGISTRY_IMAGE):$(VERSION)
+	docker pull $(REGISTRY_IMAGE):$(VERSION)
 
 # Запуск контейнера
-up: down
+up: stop
+	node .output/server/index.mjs &
+    # Запускаем контейнер с Nginx
 	docker run --name $(PROJECT_NAME) \
     -p 127.0.0.1:$(APP_PORT):80 \
     --detach \
     $(REGISTRY_IMAGE):$(VERSION)
+    # Запускаем Nginx внутри контейнера
+	docker exec $(PROJECT_NAME) nginx -g "daemon off;" || true
 
-# Остановка и удаление контейнера
-down:
-	docker stop $(PROJECT_NAME) && docker container rm $(PROJECT_NAME) || true
+# Остановка контейнера
+stop:
+	docker stop $(PROJECT_NAME) 2>/dev/null || true
+	docker container rm $(PROJECT_NAME) 2>/dev/null || true
 
 # Запуск контейнера в интерактивном режиме (для отладки)
 run:
 	docker run --rm -it \
-    -p 127.0.0.1:$(APP_PORT):80 \
-    $(REGISTRY_IMAGE):$(VERSION)
+	-p 127.0.0.1:$(APP_PORT):80 \
+	$(REGISTRY_IMAGE):$(VERSION)
 
 # Очистка всех ресурсов (контейнеры, образы)
 clean:
-	docker stop $(PROJECT_NAME) && docker container rm $(PROJECT_NAME) || true
+	docker stop $(PROJECT_NAME) 2>/dev/null || true
+	docker container rm $(PROJECT_NAME) 2>/dev/null || true
 	docker rmi $(REGISTRY_IMAGE):$(VERSION) || true
