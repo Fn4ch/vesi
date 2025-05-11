@@ -18,15 +18,11 @@ pull:
 	docker pull $(REGISTRY_IMAGE):$(VERSION)
 
 # Запуск контейнера
-up: stop
-	node .output/server/index.mjs &
-    # Запускаем контейнер с Nginx
+up: down
 	docker run --name $(PROJECT_NAME) \
-    -p 127.0.0.1:$(APP_PORT):80 \
-    --detach \
-    $(REGISTRY_IMAGE):$(VERSION)
-    # Запускаем Nginx внутри контейнера
-	docker exec $(PROJECT_NAME) nginx -g "daemon off;" || true
+	-p 127.0.0.1:$(APP_PORT):80 \
+	--detach \
+	$(REGISTRY_IMAGE):$(VERSION)
 
 # Остановка контейнера
 stop:

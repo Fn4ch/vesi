@@ -13,6 +13,7 @@
           <meta property="og:image" content="https://www.vesiobr.ru/preview-image.jpg">
           <meta property="og:url" content="https://www.vesiobr.ru/">
       </Head>
+      <AppHeader />
       <ProductInfo />
       <ProductList />
   </div>

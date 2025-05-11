@@ -2,7 +2,7 @@
     <header id="header" class="header">
         <nav class="navigation">
             <div class="navigation__logo">
-                <img src="../src/assets/logo.svg" class="logo"/>
+                <img src="../assets/logo.svg" class="logo"/>
             </div>
             <div class="navigation__links">
                 <NuxtLink class="link">Каталог</NuxtLink>

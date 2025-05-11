@@ -1,4 +1,3 @@
-import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -14,6 +13,8 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  ssr: true,
 
   image: {
     inject: true,
