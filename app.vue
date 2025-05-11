@@ -16,10 +16,17 @@
       <AppHeader />
       <ProductInfo />
       <ProductList />
+      <AppFooter />
+      
   </div>
 </template>
   
 <script setup lang="ts">
+import AppHeader from '~/src/widgets/AppHeader.vue'
+import ProductList from '~/src/features/Product'
+import AppFooter from '~/src/widgets/AppFooter.vue'
+import ProductInfo from './src/features/Product/components/ProductInfo.vue';
+
 
 </script>
 

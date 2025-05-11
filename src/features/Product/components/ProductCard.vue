@@ -9,13 +9,13 @@
 
 <script setup lang="ts">
 withDefaults(defineProps<{
-    title: string,
-    image: string,
-    description?: string // Необязательный prop
+    title?: string,
+    image?: string,
+    description?: string
 }>(), {
     title: 'Title',
-    image: '/images/pallete.png', // Убедитесь, что файл существует в public/images/
-    description: '' // Значение по умолчанию для необязательного prop
+    image: '/images/pallete.png',
+    description: ''
 })
 </script>
 

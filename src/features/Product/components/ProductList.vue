@@ -11,13 +11,14 @@
                 :image="p.image" 
                 :title="p.title" 
                 :description="p.description" 
-                :class="index % 2 === 1 ? 'products-list__left' : 'products-list__right'"/>
+            />
         </section>
     </article>
 </template>
 <script setup lang="ts">
-import type { IVesi } from '~/src/shared/models'
+import type { IVesi } from '~/src/entities/Product/model';
 import vesi from  '~/src/shared/constants/vesi.json'
+import ProductCard from './ProductCard.vue';
 
 const PRODUCTS_DATA: IVesi[] = vesi
 </script>
@@ -31,7 +32,7 @@ const PRODUCTS_DATA: IVesi[] = vesi
     align-items: center;
     row-gap: 1rem;
     align-self: flex-start;
-    margin-top: -70vh;
+    margin-top: -65vh;
     h2{
         font-size: 2.2rem;
         height: 1.4;
