@@ -1,38 +1,42 @@
-IMAGE_NAME := ves
-CONTAINER_NAME := ves-container
-TAG ?= latest
-PORT ?= 80:80
+.PHONY: env build all up run down push pull clean
 
-.PHONY: build run up stop rm clean logs
+APP_PORT ?= 80
+REGISTRY_IMAGE ?= vesi
+PROJECT_NAME ?= vesi-kazan
+VERSION ?= latest
+
+# Сборка Docker-образа
 build:
-    docker build -t $(IMAGE_NAME):$(TAG) .
+	docker build -t $(REGISTRY_IMAGE):$(VERSION) .
+
+# Загрузка образа в реестр
+push:
+	docker push $(REGISTRY_IMAGE):$(VERSION)
+
+# Скачивание образа из реестра
+pull:
+	docker pull $(REGISTRY_IMAGE):$(VERSION)
 
 # Запуск контейнера
-run:
-    docker run -d \
-        -p $(PORT) \
-        --name $(CONTAINER_NAME) \
-        $(IMAGE_NAME):$(TAG)
-
-# Сборка и запуск
-up: build run
+up: down
+	docker run --name $(PROJECT_NAME) \
+	-p 127.0.0.1:$(APP_PORT):80 \
+	--detach \
+	$(REGISTRY_IMAGE):$(VERSION)
 
 # Остановка контейнера
 stop:
-    docker stop $(CONTAINER_NAME) || true
+	docker stop $(PROJECT_NAME) 2>/dev/null || true
+	docker container rm $(PROJECT_NAME) 2>/dev/null || true
 
-# Удаление контейнера
-rm: stop
-    docker rm $(CONTAINER_NAME) || true
+# Запуск контейнера в интерактивном режиме (для отладки)
+run:
+	docker run --rm -it \
+	-p 127.0.0.1:$(APP_PORT):80 \
+	$(REGISTRY_IMAGE):$(VERSION)
 
-# Полная очистка (контейнер + образ)
-clean: rm
-    docker rmi $(IMAGE_NAME):$(TAG) || true
-
-# Просмотр логов
-logs:
-    docker logs $(CONTAINER_NAME)
-
-# Заход в контейнер
-exec:
-    docker exec -it $(CONTAINER_NAME) sh
+# Очистка всех ресурсов (контейнеры, образы)
+clean:
+	docker stop $(PROJECT_NAME) 2>/dev/null || true
+	docker container rm $(PROJECT_NAME) 2>/dev/null || true
+	docker rmi $(REGISTRY_IMAGE):$(VERSION) || true
