@@ -42,17 +42,6 @@ const number2 = '+79600310187'
 const mail = 'rusbar2008@rambler.ru'
 const address = 'Юр. Адрес г. Казань, ул. Маршала Чуйкова 15'
 
-console.log('Footer Config:', {
-  number,
-  number2,
-  mail,
-  address
-})
-
-onMounted(() => {
-  console.log('process.env:', process.env.NUXT_PUBLIC_FOOTER_NUMBER)
-})
-
 const currentYear = new Date().getFullYear()
 </script>
 
